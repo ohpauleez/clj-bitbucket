@@ -1,0 +1,8 @@
+new -s clj-bitbucket -nlein
+splitw -v -p 40
+neww -t 2 -nvim
+splitw -h
+splitw -v
+neww -d -t 3 -nscratch
+selectw -t 1
+selectp -t 0

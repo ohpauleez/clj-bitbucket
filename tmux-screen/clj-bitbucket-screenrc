@@ -1,0 +1,84 @@
+startup_message off
+vbell off
+altscreen on
+escape ^Tt
+defscrollback 3000    # please sir, can i have some more? #
+defmonitor on     # turn monitoring on                    #
+
+#terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+#termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+termcapinfo xterm* "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+
+# term & erase background with current bg color
+defbce on
+term xterm-256color
+
+# caption and hardstatus
+#caption always "%?%F%{= Bk}%:%{= Kw}%? %-Lw%40L>%?%F%{b db}%:%{b kW}%? %n %t %{-}%+Lw%="
+#caption always "%{Yk} %H | %D %Y/%02m/%02d %0c %{k}|%{G} %l %{k}|%{W} %-w%{+b}%n %t%{-b}%+w"
+#hardstatus alwayslastline "%{= kG} %?%h%:Screen #%n %t in %S%?%=%c:%s  "
+#caption always "%{W} %-w%{+b}%n %t%{-b}%+w"
+caption always "%{Yk}%{k}%{W} %-w%{+b}%n %t%{-b}%+w"
+hardstatus alwayslastline "%{= kY} %H | %{G} %l %{= kG} %?%=%D %Y/%02m/%02d ||  %c:%s  "
+activity "<%n>"      # tell me when stuff happens!           #
+
+
+
+#########################################################################
+#crlf off      # no thanks.        #
+#shell -$SHELL     # i'll take my default shell.   #
+#########################################################################
+
+###
+### Let's do some bindings.
+###
+#####################################################
+### irc creates ssh tunnel to judecca then      #
+### launches irssi locally.                   #
+#####################################################
+#bind G screen -t 'Google' links www.google.com      #
+#bind M screen -t 'Mail' mutt                        #
+#bind F screen -t 'Fetchmail' fetchmail              # 
+#####################################################
+
+###
+### F11-F12 become Prev/Fwd
+###
+########################
+### yes, it's funky    #
+########################
+bindkey -k k1 select 0 # F1 = screen 0
+bindkey -k k2 select 1 # F2 = screen 1
+bindkey -k k3 select 2 # F3 = screen 2
+bindkey -k k4 select 3 # F4 = screen 3
+bindkey -k k5 select 4 # F5 = screen 4
+bindkey -k k6 select 5 # F6 = screen 5
+bindkey -k k7 select 6 # F7 = screen 6
+bindkey -k k8 select 7 # F8 = screen 7
+bindkey -k F2 next     # F12 = next
+bindkey -k F1 prev     # F11 = previous
+bindkey ^[O5C next
+bindkey ^[O5D prev
+########################
+#bindkey ^[[1~ ^A
+#bindkey ^[[4~ ^E
+#bindkey -k kh ^A # Home is beg line
+#bindkey -k kH ^E # End of the line
+#bindkey ^[O2A [[5~ # Shift up is also page up
+#bindkey ^[O2B [[6~ # Shift up is also page up
+#
+
+screen -t nailgun 0
+screen -t lein 1
+chdir ./src
+screen -t vim 2
+chdir ../
+screen -t repl 3
+chdir ../
+screen -t scratch 4
+chdir $HOME
+screen -t home 5
+select 0
+
