@@ -25,7 +25,14 @@
   ([req]
    (make-request {} req))
   ([req auth]
-   (-> (client/request (merge {:basic-auth auth} req) :body json/read-string))))
+   (client/request (merge {:basic-auth auth} req))))
+
+(defn make-json-request
+  "Like make-request, but will force format to be json, and json/read-string you the result"
+  ([req]
+   (make-json-request {} req))
+  ([req auth]
+   (-> (assoc-in req [:query-params :format] "json") (make-request auth) :body json/read-string)))
 
 ;; This might be useful to third parties, so they don't need to look at the clj-http docs
 (defn make-auth
