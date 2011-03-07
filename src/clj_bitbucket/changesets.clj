@@ -9,6 +9,8 @@
   ""
   ([user repo node opts]
    (changeset (str user "/" repo) node opts))
+  ([userrepo node]
+   (changeset userrepo node {}))
   ([userrepo node opts]
    (repos/fetch-repo (str userrepo "/changesets/" node) opts)))
 
@@ -16,6 +18,8 @@
   ""
   ([user repo opts]
    (all-changesets (str user "/" repo) opts))
+  ([userrepo]
+   (all-changesets userrepo {}))
   ([userrepo opts]
    (changeset userrepo "" opts)))
 
