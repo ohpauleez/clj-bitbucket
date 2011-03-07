@@ -5,18 +5,20 @@
 
 
 (defn search-repos
-  [query [{:keys [auth ret-format] :or {:auth {} :format "json"}} opts]]
+  [query {:keys [auth ret-format] :or {auth {} ret-format "json"} :as opts}]
   (core/make-json-request
     (core/create-request :get "/repositories/"
                          (assoc-in opts [:query-params :name] query)
                          ret-format)))
 
-(defn create-repo)
+(defn create-repo
+  ""
+  [])
 
 (defn fetch-repo
   ([user repo opts]
    (search-repos (str user "/" repo) opts))
-  ([userrepo [{:keys [auth ret-format] :or {:auth {} :format "json"}} opts]]
+  ([userrepo {:keys [auth ret-format] :or {auth {} ret-format "json"} :as opts}]
    (core/make-json-request
      (core/create-request :get
                           (str "/repositories/" userrepo)
@@ -36,8 +38,11 @@
   ([userrepo opts]
    (fetch-repo (str userrepo "/branches/") opts)))
 
-(defn update-repo)
+(defn update-repo
+  ""
+  [])
 
-(defn delete-repo)
-
+(defn delete-repo
+  ""
+  [])
 

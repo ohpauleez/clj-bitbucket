@@ -1,20 +1,16 @@
 (ns clj-bitbucket.changesets
   "BitBucket Changesets API features
   [http://confluence.atlassian.com/display/BBDEV/Changesets]"
-  (:require [clj-bitbucket.core :as core]))
+  (:require [clj-bitbucket.core :as core]
+            [clj-bitbucket.repositories :as repos]))
 
 
 (defn changeset
   ""
   ([user repo node opts]
    (changeset (str user "/" repo) node opts))
-  ([userrepo node [{:keys [auth ret-format] :or {:auth {} :format "json"}} opts]]
-   (core/make-json-request
-     (core/create-request :get
-                          (str "/repositories/" userrepo "/changesets/" node)
-                          opts
-                          ret-format)
-     auth)))
+  ([userrepo node opts]
+   (repos/fetch-repo (str userrepo "/changesets/" node) opts)))
 
 (defn all-changesets
   ""

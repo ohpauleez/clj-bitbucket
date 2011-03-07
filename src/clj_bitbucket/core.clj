@@ -2,7 +2,7 @@
   "The core functions for making requests to the BitBucket API;
   These are really only used by the other API files."
   (:require [clj-http.client :as client]
-            [clj-json :as json]))
+            [clj-json.core :as json]))
 
 
 (defn create-url
@@ -45,11 +45,11 @@
    (client/request (merge {:basic-auth auth} req))))
 
 (defn make-json-request
-  "Like make-request, but will force format to be json, and json/read-string you the result"
+  "Like make-request, but will force format to be json, and json/parse-string you the result"
   ([req]
    (make-json-request {} req))
   ([req auth]
-   (-> (assoc-in req [:query-params :format] "json") (make-request auth) :body json/read-string)))
+   (-> (assoc-in req [:query-params :format] "json") (make-request auth) :body json/parse-string)))
 
 ;; This might be useful to third parties, so they don't need to look at the clj-http docs
 (defn make-auth
