@@ -20,3 +20,7 @@ lib
 # Logging
 *.log
 
+# Docs
+autodoc/**
+docs/**
+
