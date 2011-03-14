@@ -6,7 +6,7 @@
                            [repositories :as repos]]))
 
 (defn fetch-source
-  ""
+  "Fetch the source or a file, either raw, or as json"
   ([user repo rev path opts]
    (fetch-source (cstr/join "/" user repo rev path) opts))
   ([userrepo rev path opts]
