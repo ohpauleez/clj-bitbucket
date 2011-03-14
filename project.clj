@@ -11,7 +11,7 @@
                  [clj-json "0.3.1"]]
   :dev-dependencies [[vimclojure/server "2.3.0-SNAPSHOT"]
                      [org.clojure/clojure-contrib "1.2.0"]
-                     [org.clojure/clojure "1.3.0-alpha4"]
+                     [org.clojure/clojure "1.3.0-alpha6"]
                      [org.clojure.contrib/repl-utils "1.3.0-alpha4"]
                      ;[org.clojure.contrib/repl-utils "1.3.0-SNAPSHOT"]
                      [lein-cdt "1.0.0"] ; use lein cdt to attach
@@ -22,7 +22,7 @@
                      [com.stuartsierra/lazytest "2.0.0-SNAPSHOT"]]
   :repositories {"stuartsierra-releases" "http://stuartsierra.com/maven2"
                  "stuartsierra-snapshots" "http://stuartsierra.com/m2snapshots"}
-  :hooks  [leiningen.hooks.cdt]
+  ;:hooks  [leiningen.hooks.cdt]
   ;:cdt-debug-port 8022
   ;:warn-on-reflection true
   ;:jvm-opts ["-Xmx1g"]
