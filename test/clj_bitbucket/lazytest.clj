@@ -1,4 +1,4 @@
-(ns coopquo.lazytest
+(ns clj-bitbucket.lazytest
   (:use lazytest.results
         lazytest.tracker
         lazytest.runner.console
@@ -11,11 +11,11 @@
   
   This is nearly an exact copy of lazytest.main.)
 
-(defn test-coopquo []
+(defn test-clj-bitbucket []
   (let [namespaces ((tracker (map file ["./test"]) 0))]
     (apply require namespaces)
     (let [results (apply run-tests namespaces)]
       (report results))))
 
-(test-coopquo)
+(test-clj-bitbucket)
 
