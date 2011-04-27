@@ -79,6 +79,23 @@ Wrapping can also be tailored, and used on a visual block:
     * \w(
 
 
+### CDT - Clojure Debugging toolkit
+
+You can start a debugging REPL with: `lein cdt`
+    (set-catch java.lang.IllegalArgumentException :all)
+    (delete-catch java.lang.IllegalArgumentException)
+    (print-frames)
+    (up)
+    (down)
+    (cont)
+    (set-bp clojure.core/into)
+    (delete-bp clojure.core/into)
+    (local-names)
+    (locals)
+    (reval)
+    (reval-println)
+
+
 ### Running the tests
 
 From the project root, `./script/lazytest` will run all the tests.
