@@ -85,8 +85,29 @@
 (defn fetch-repo-followers
   "Fetch the followers of a given repos"
   ([user repo opts]
-   (fetch-repo-events (str user "/" repo) opts))
+   (fetch-repo-followers (str user "/" repo) opts))
   ([userrepo]
-   (fetch-repo-events userrepo {}))
+   (fetch-repo-followers userrepo {}))
   ([userrepo opts]
    (fetch-repo (str userrepo "/followers") opts)))
+
+;; Repository issues
+;; =================
+(defn fetch-repo-issues
+  "Fetch the issues for a given repository"
+  ([user repo opts]
+   (fetch-repo-issues (str user "/" repo) opts))
+  ([userrepo]
+   (fetch-repo-issues userrepo {}))
+  ([userrepo opts]
+   (fetch-repo (str userrepo "/issues") opts)))
+
+(defn fetch-repo-issue
+  "Fetch the issues for a given repository"
+  ([issue-num user repo opts]
+   (fetch-repo-issue issue-num (str user "/" repo) opts))
+  ([issue-num userrepo]
+   (fetch-repo-issue issue-num userrepo {}))
+  ([issue-num userrepo opts]
+   (fetch-repo (str userrepo "/issues/" issue-num) opts)))
+
